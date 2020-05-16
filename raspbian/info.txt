@@ -1,0 +1,1 @@
+udev rule - works for huawei E3372/E3531
