@@ -1,7 +1,7 @@
 [Unit]
 Description=Create ssh and http tunnel to the server
-After=network-online.target
-Wants=network-online.target
+After=network-online.target network-wait-online.target
+Wants=network-online-target network-wait-online.target
 
 [Install]
 WantedBy=multi-user.target
@@ -12,4 +12,5 @@ Type=simple
 User=pi
 WorkingDirectory=/home/pi
 Restart=on-failure
+RestartSec=5
 
