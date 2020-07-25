@@ -1,0 +1,15 @@
+[Unit]
+Description=Create ssh and http tunnel to the server
+After=network-online.target
+Wants=network-online.target
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+ExecStart=/bin/bash /home/pi/car_audio/raspbian/init.sh
+Type=simple
+User=pi
+WorkingDirectory=/home/pi
+Restart=on-failure
+
