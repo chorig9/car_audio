@@ -1,4 +1,4 @@
 #!/bin/bash
 
-./create_tunnel.sh
+./clear_tunnels.sh
 
