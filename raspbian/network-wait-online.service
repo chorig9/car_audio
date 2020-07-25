@@ -2,7 +2,7 @@
 Description=Wait for Network to be Online
 Documentation=man:systemd.service(5) man:systemd.special(7)
 Conflicts=shutdown.target
-After=network.target network-online.target
+After=network.target network-online.target multi-user.target
 
 [Install]
 WantedBy=client_init.service
