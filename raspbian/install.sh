@@ -3,7 +3,7 @@ cp 70-usb-modeswitch.rules /etc/udev/rules.d/
 cp network-wait-online.service /lib/systemd/system/
 cp client_init.service /etc/systemd/system/
 cp ssh_tunnel.service /etc/systemd/system/
-cp http_tunnel.service /etc/systemd/sysetem/
+cp http_tunnel.service /etc/systemd/system/
 
 systemctl daemon-reload
 systemctl enable network-wait-online.service

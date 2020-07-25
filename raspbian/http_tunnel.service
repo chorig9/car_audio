@@ -1,7 +1,7 @@
 [Unit]
 Description=Create ssh and http tunnel to the server
 After=network-online.target network-wait-online.target client_init.target
-Wants=network-online-target network-wait-online.target client_init.target
+Wants=network-online.target network-wait-online.target client_init.target
 
 [Install]
 WantedBy=multi-user.target
