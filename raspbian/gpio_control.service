@@ -1,0 +1,10 @@
+[Unit]
+Description=GPIO control
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+ExecStart=python3 /home/pi/car_audio/control_internet.sh
+Type=simple
+
