@@ -5,6 +5,6 @@ Description=GPIO control
 WantedBy=multi-user.target
 
 [Service]
-ExecStart=python3 /home/pi/car_audio/control_internet.sh
+ExecStart=python3 /home/pi/car_audio/control_internet.py
 Type=simple
 
