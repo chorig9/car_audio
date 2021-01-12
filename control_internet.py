@@ -4,7 +4,15 @@ import subprocess
 
 from spotify_controller.controller import *
 
-spotify = SpotifyController()
+spotify = None
+
+while spotify is None:
+	time.sleep(10)
+	try:
+		spotify = SpotifyController()
+	except Error as e:
+		print(e)
+
 
 def loading_event(channel):
 	time.sleep(2)
@@ -20,6 +28,8 @@ def loading_event(channel):
 		subprocess.run(["systemctl", "restart", "raspotify.service"])
 		time.sleep(2)
 		spotify.play()
+
+spotify.play()
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(26, GPIO.IN, pull_up_down=GPIO.PUD_UP)
