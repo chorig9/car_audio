@@ -17,7 +17,10 @@ while True:
 	try:
 		spotify.cur_playing()
 	except Exception as e:
-		subprocess.run(["systemctl", "restart", "raspotify.service"])
-		time.sleep(2)
-		spotify.play()
-		time.sleep(2)
+		try:
+			subprocess.run(["systemctl", "restart", "raspotify.service"])
+			time.sleep(2)
+			spotify.play()
+			time.sleep(2)
+		except Exception as ee:
+			pass
