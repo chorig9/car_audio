@@ -5,22 +5,28 @@ from spotify_controller.controller import *
 
 spotify = None
 
-while spotify is None:
-	time.sleep(10)
-	try:
-		spotify = SpotifyController()
-		spotify.play()
-	except Error as e:
-		print(e)
-
-while True:
-	try:
-		spotify.cur_playing()
-	except Exception as e:
+def restart():
+	global spotify
+	while True:
+		time.sleep(10)
 		try:
 			subprocess.run(["systemctl", "restart", "raspotify.service"])
 			time.sleep(2)
+			spotify = SpotifyController()
+			if spotify == None:
+				continue
 			spotify.play()
-			time.sleep(2)
-		except Exception as ee:
-			pass
+			return
+		except Error as e:
+			print(e)
+
+restart()
+
+while True:
+	try:
+		ret = spotify.cur_playing()
+		if ret["is_playing"] == False:
+			restart()
+		time.sleep(10)
+	except Exception as e:
+		restart()

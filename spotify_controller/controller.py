@@ -19,7 +19,7 @@ class TokenManager:
 class SpotifyController:
     def _find_device(self):
         for device in self.sp.devices()["devices"]:
-            if device["name"] == DEVICE_NAME:
+            if device["name"] == "car_raspotify":
                 return device["id"]
         return None
 
