@@ -38,25 +38,16 @@ class SpotifyController:
             self.device_id = self._find_device()
 
     def play(self):
-        try:
-            self.sp.transfer_playback(self.device_id)
-        except Exception as e:
-            print(e)
+        self.sp.transfer_playback(self.device_id)
 
     def pause(self):
-        try:
-            self.sp.pause_playback(self.device_id)
-        except Exception as e:
-            print(e)
+        self.sp.pause_playback(self.device_id)
 
     def next(self):
-        try:
-            self.sp.next_track(self.device_id)
-        except Exception as e:
-            print(e)
+        self.sp.next_track(self.device_id)
 
     def prev(self):
-        try:
-            self.sp.previous_track(self.device_id)
-        except Exception as e:
-            print(e)
+        self.sp.previous_track(self.device_id)
+        
+    def cur_playing(self):
+        return self.sp.currently_playing()
