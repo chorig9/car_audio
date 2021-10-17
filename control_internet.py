@@ -1,41 +1,22 @@
-import RPi.GPIO as GPIO
 import time
 import subprocess
 
-from spotify_controller.controller import *
-
-spotify = None
-
-while spotify is None:
-	time.sleep(10)
-	try:
-		spotify = SpotifyController()
-	except Error as e:
-		print(e)
-
-
-def loading_event(channel):
-	time.sleep(2)
-
-	if GPIO.input(channel):
-		print("not loading")
-		spotify.pause()
-		subprocess.run(["ifconfig", "eth0", "down"])
-	else:
-		print("loading")
-		subprocess.run(["ifconfig", "eth0", "up"])
-		time.sleep(5)
-		subprocess.run(["systemctl", "restart", "raspotify.service"])
-		time.sleep(2)
-		spotify.play()
-
-spotify.play()
-
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(26, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-GPIO.add_event_detect(26, GPIO.BOTH, callback=loading_event)
+max_tries = 10
 
 while True:
-	time.sleep(10)
+	try:
+		ret = subprocess.call(["git", "pull",  "origin"])
+		if ret == 0:
+			break
+	except Exception as e:
+		print(e)
+
+	max_tries = max_tries - 1
+	if max_tries == 0:
+		break
+
+
+subprocess.call(["python3", "/home/pi/car_audio/run.py"])
+
 
 
