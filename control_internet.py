@@ -14,6 +14,8 @@ while True:
 	max_tries = max_tries - 1
 	if max_tries == 0:
 		break
+		
+	time.sleep(2)
 
 
 subprocess.call(["python3", "/home/pi/car_audio/run.py"])
