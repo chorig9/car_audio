@@ -8,8 +8,9 @@ spotify = None
 def restart():
 	global spotify
 	while True:
-		time.sleep(10)
 		try:
+			subprocess.run(["ifconfig", "eth0", "up"])
+			time.sleep(5)
 			subprocess.run(["systemctl", "restart", "raspotify.service"])
 			time.sleep(2)
 			spotify = SpotifyController()
@@ -19,6 +20,7 @@ def restart():
 			return
 		except Error as e:
 			print(e)
+		time.sleep(10)
 
 restart()
 
