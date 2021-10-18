@@ -18,7 +18,7 @@ def restart():
 				continue
 			spotify.play()
 			return
-		except Error as e:
+		except Exception as e:
 			print(e)
 		time.sleep(10)
 		
