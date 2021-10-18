@@ -21,7 +21,8 @@ def restart():
 		except Error as e:
 			print(e)
 		time.sleep(10)
-
+		
+print("start")
 restart()
 
 while True:
