@@ -24,7 +24,6 @@ def restart():
 		
 print("start")
 restart()
-spotify.next()
 
 while True:
 	try:
