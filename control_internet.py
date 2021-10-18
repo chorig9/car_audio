@@ -5,7 +5,7 @@ max_tries = 10
 
 while True:
 	try:
-		ret = subprocess.call(["git", "pull",  "origin"])
+		ret = subprocess.call(["git", "-C", "/home/pi/car_audio", "pull",  "origin"])
 		if ret == 0:
 			break
 	except Exception as e:
