@@ -18,7 +18,10 @@ def initialize():
 			spotify = SpotifyController()
 			if spotify == None:
 				continue
-			progress = spotify.get_progress_ms()
+			try:
+				progress = spotify.get_progress_ms()
+			except:
+				progress = 0
 			spotify.play()
 			spotify.seek_track(progress)
 			return
@@ -49,7 +52,10 @@ while True:
 		ret = spotify.cur_playing()
 		if ret["is_playing"] == False:
 			restart()
-		progress = spotify.get_progress_ms()
+		try:
+			progress = spotify.get_progress_ms()
+		except:
+			pass
 		time.sleep(10)
 	except Exception as e:
 		restart()
