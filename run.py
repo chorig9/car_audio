@@ -5,7 +5,7 @@ from spotify_controller.controller import *
 
 spotify = None
 
-def restart():
+def initialize():
 	global spotify
 	while True:
 		try:
@@ -21,9 +21,23 @@ def restart():
 		except Exception as e:
 			print(e)
 		time.sleep(5)
+
+def restart():
+	global spotify
+	numFailed = 0
+	while True:
+		try:
+			if numFailed > 7:
+				initialize()
+			spotify.play()
+			return
+		except Exception as e:
+			numFailed = numFailed + 1
+			print(e)
+		time.sleep(5)
 		
 print("start")
-restart()
+initialize()
 
 while True:
 	try:
