@@ -41,7 +41,8 @@ class SpotifyController:
         return self.sp.currently_playing()["progress_ms"]
 
     def seek_track(self, progress_ms):
-        self.sp.seek_track(progress_ms)
+        if progress_ms > 0:
+            self.sp.seek_track(progress_ms)
     
     def play(self):
         self.sp.transfer_playback(self.device_id)
