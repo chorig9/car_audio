@@ -34,7 +34,7 @@ def restart():
 	numFailed = 0
 	while True:
 		try:
-			if numFailed > 7:
+			if numFailed > 10:
 				initialize()
 			spotify.play()
 			spotify.seek_track(progress)
@@ -50,7 +50,7 @@ initialize()
 while True:
 	try:
 		ret = spotify.cur_playing()
-		if ret["is_playing"] == False:
+		if ret is None or ret["is_playing"] == False:
 			restart()
 		try:
 			progress = spotify.get_progress_ms()
